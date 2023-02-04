@@ -1,0 +1,5 @@
+[package]
+name = "base"
+version = "0.8.1"
+description = "The Motoko base library"
+repository = "https://github.com/dfinity/motoko-base"

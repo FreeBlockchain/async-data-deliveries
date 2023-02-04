@@ -1,0 +1,11 @@
+[package]
+name = "mal"
+version = "0.0.26"
+description = "Motoko async data deliveries"
+repository = "https://github.com/fury02/async-data-deliveries"
+keywords = [ "mal", "async"]
+
+[dependencies]
+base = "0.8.1"
+fuzz = "0.1.0"
+stable-hash-map = "0.0.1"

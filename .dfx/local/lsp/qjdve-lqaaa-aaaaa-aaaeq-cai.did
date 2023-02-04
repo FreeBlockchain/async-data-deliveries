@@ -1,0 +1,51 @@
+type Time = int;
+type Scaner = 
+ variant {
+   OFF;
+   ON;
+ };
+type MsgId = nat;
+type MessageType__1 = 
+ variant {
+   ACK: record {
+          msg_id: MsgId;
+          payload: blob;
+        };
+   FIN: record {msg_id: MsgId;};
+   NEW: record {
+          msg_id: MsgId;
+          payload: blob;
+        };
+ };
+type MessageType = 
+ variant {
+   ACK: record {
+          msg_id: MsgId;
+          payload: blob;
+        };
+   FIN: record {msg_id: MsgId;};
+   NEW: record {
+          msg_id: MsgId;
+          payload: blob;
+        };
+ };
+type MessageStatus = 
+ record {
+   attempts: nat16;
+   caller_id: text;
+   creation_time: Time;
+   message_type: MessageType;
+   processed: bool;
+ };
+service : {
+  clear: () -> () oneway;
+  collection_by_time: () -> (vec opt MessageStatus);
+  com_asyncFlow_ack: (MessageType__1) -> () oneway;
+  count: () -> (nat);
+  message_default: () -> (opt MessageStatus);
+  new_message: (text, blob) -> () oneway;
+  restart_scaner: () -> () oneway;
+  start_scaner: () -> () oneway;
+  status_scaner: () -> (Scaner);
+  stop_scaner: () -> () oneway;
+}
